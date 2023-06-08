@@ -18,6 +18,7 @@ public class UserListPage {
 	@FindBy(xpath="(//a[contains(text(),'System,')]/ancestor::tbody/descendant::a)[1]")private WebElement userListFirstSuggestion;
 	@FindBy(xpath="//input[@value='Delete This User']")private WebElement deleteThisUserButton;
 	
+	
 	//initialization
 	public UserListPage(WebDriver driver)
 	{
@@ -66,8 +67,10 @@ public class UserListPage {
 		return deleteThisUserButton;
 	}
 	
-	//operational methods
 	
+	
+	//operational methods
+
 	public void createUser(String un, String pwd,String fn,String ln) throws InterruptedException
 	{
 		createNewuserBT.click();
@@ -81,9 +84,10 @@ public class UserListPage {
 		firstNameTB.sendKeys(fn);
 		Thread.sleep(1000);
 		lastNameTB.sendKeys(ln);
-		Thread.sleep(1000);
 		createUseBT.click();
 	}
+	
+	
 	
 	public void deleteUser() throws InterruptedException {
 		userListFirstSuggestion.click();
