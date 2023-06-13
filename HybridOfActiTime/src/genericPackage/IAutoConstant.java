@@ -14,5 +14,5 @@ public interface IAutoConstant {
 	
 	String PROP_PATH="./data/config.properties";
 	
-	String SCREENSHOT_PATH="./screenshots";
+	String SCREENSHOT_PATH="./ScreenShots";
 }

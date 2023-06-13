@@ -17,11 +17,21 @@ public class TasksPage {
 	@FindBy(xpath="//input[@value='Create New Project']")private WebElement CreateNewProjectBT;
 	@FindBy(xpath="//*[@name='name']")private WebElement CustomerTB;
 	@FindBy(xpath="//*[@name='createCustomerSubmit']")private WebElement CreateCustomerBT;
-	@FindBy(xpath="//*[@name='customerId']")private WebElement ProjetcSelectCustomerDropDown;
+	@FindBy(xpath="//select[@name='customerId']")private WebElement ProjetcSelectCustomerDropDown;
 	@FindBy(xpath="//*[@name='name']")private WebElement ProjectNameTB;
 	@FindBy(xpath="//*[@name='createProjectSubmit']")private WebElement CreateProjectBT;
 	@FindBy(xpath="//input[@onclick='cancelProjectCreation();']")private WebElement ProjectCancelBT;
+	@FindBy(xpath="//a[text()='All']")private WebElement selectCustomersAndProjectsAllBT;
+	@FindBy(xpath="//input[@value='Archive Selected']")private WebElement archiveSlectedBT;
 	
+	public WebElement getSelectCustomersAndProjectsCB() {
+		return selectCustomersAndProjectsAllBT;
+	}
+
+	public WebElement getArchiveSlectedBT() {
+		return archiveSlectedBT;
+	}
+
 	public TasksPage(WebDriver driver)
 	{
 		PageFactory.initElements( driver,this);
@@ -77,6 +87,11 @@ public class TasksPage {
 	
 	// Operational Methods
 	
+	public void projectsAndCutomersModuleMethod()
+	{
+		ProjectsandCustomersModule.click();
+	}
+	
 	public void createNewCustomreMethod(String custName) throws InterruptedException
 	{
 		ProjectsandCustomersModule.click();
@@ -90,11 +105,20 @@ public class TasksPage {
 	{
 		CreateNewProjectBT.click();
 		Worklib wb = new Worklib();
+		ProjetcSelectCustomerDropDown.click();
 		wb.dropDownSelect(ProjetcSelectCustomerDropDown, index);
 		ProjectNameTB.sendKeys(projectName);
 		Thread.sleep(2000);
 		CreateProjectBT.click();
 		
+	}
+	
+	public void archiveCustomerAndProjectMethod()
+	{
+		selectCustomersAndProjectsAllBT.click();
+		archiveSlectedBT.click();
+		Worklib wl = new Worklib();
+		wl.acceptConfirmation();
 	}
 	
 	

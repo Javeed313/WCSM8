@@ -43,7 +43,7 @@ public class BaseTest extends Flib implements IAutoConstant{
 		}
 		else if(browserValue.equals("edge"))
 		{
-			System.setProperty(EDGE_KEY,EDGE_PATH);
+			//System.setProperty(EDGE_KEY,EDGE_PATH);
 			driver=new EdgeDriver();
 			driver.manage().window().maximize();
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));

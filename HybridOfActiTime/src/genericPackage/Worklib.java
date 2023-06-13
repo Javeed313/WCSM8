@@ -1,5 +1,9 @@
 package genericPackage;
 
+import java.util.Set;
+
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
@@ -74,6 +78,41 @@ public class Worklib extends BaseTest {
 	{
 	   Select sel = new Select(element);
 	   sel.selectByIndex(index);
+	}
+	
+	// switch To Windows
+	
+	public void switchToChildWindow(WebElement elementToBeCLick) throws InterruptedException
+	{
+		String parentWindow = driver.getWindowHandle();
+		
+		elementToBeCLick.click();
+		Thread.sleep(1000);
+		Set<String> allWindows = driver.getWindowHandles();
+		
+		for(String aw:allWindows)
+		{
+			if(!parentWindow.equals(aw))
+			{
+				driver.switchTo().window(aw);
+			}
+		}
+	}
+	
+	public void switchToParentWindow()
+	{
+		
+	}
+	
+	// Scrolling Operation Methods
+	
+	public void scrollBy(WebElement element)
+	{
+		Point point = element.getLocation();
+		int xaxis = point.getX();
+		int yaxis = point.getY();
+		JavascriptExecutor jse = (JavascriptExecutor)driver;
+		jse.executeScript("window.scrollBy("+xaxis+","+yaxis+")");
 	}
 
 }

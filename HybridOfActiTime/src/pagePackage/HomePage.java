@@ -13,14 +13,19 @@ public class HomePage {
 	@FindBy(xpath="//A[@class='content calendar']/IMG[@class='sizer']")private WebElement workscheduleModule;
 	@FindBy(xpath="//A[@class='content administration']/IMG[@class='sizer']")private WebElement settingsModule;
 	@FindBy(xpath="//a[contains(normalize-space(@class),'logout')]")private WebElement logoutlink;
+	@FindBy(xpath="//div[text()='Time-Track']/..")private WebElement timeTrackModule;
 	
 	//initialization
-	
+
 	public HomePage(WebDriver driver) {
 		PageFactory.initElements(driver,this);
 	}
 	
 	//Utilization
+	
+	public WebElement getTimeTrackModule() {
+		return timeTrackModule;
+	}
 
 	public WebElement getTaskModule() {
 		return taskModule;
@@ -47,6 +52,11 @@ public class HomePage {
 	}
 	
 	//operational methods
+	
+	public void timeTrackModule()
+	{
+		timeTrackModule.click();
+	}
 	
 	public void logoutlink()
 	{

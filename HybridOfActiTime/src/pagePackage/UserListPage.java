@@ -21,7 +21,7 @@ public class UserListPage {
 	@FindBy(xpath="//input[@value='Delete This User']")private WebElement deleteThisUserButton;
 	@FindBy(xpath="//*[@id='right12']")private WebElement ModifyTimeTrack;
 	@FindBy(xpath="//*[@id='right2']")private WebElement ManageCustomers;
-	@FindBy(xpath="//*[@id='right13']")private WebElement ManageTasks;
+	@FindBy(xpath="//input[@name='rightGranted[13]']")private WebElement ManageTasks;
 	@FindBy(xpath="//*[@id='right1']")private WebElement GenerateReports;
 	@FindBy(xpath="//*[@id='right5']")private WebElement ManageUsers;
 	@FindBy(xpath="//*[@id='right7']")private WebElement ManageBillingTypes;
@@ -119,11 +119,12 @@ public class UserListPage {
 		createUseBT.click();
 	}
 	
-	public void managerPermissions()
+	public void managerPermissions() throws InterruptedException
 	{
 		ModifyTimeTrack.click();
+		Thread.sleep(2000);
 		ManageCustomers.click();
-		ManageTasks.click();
+		//ManageTasks.click();
 		GenerateReports.click();
 		ManageUsers.click();
 		ManageBillingTypes.click();
